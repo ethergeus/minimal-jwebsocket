@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test WebSocket Client</title>
+</head>
+<body>
+<p id="response"></p>
+<button id="ping" onclick="ws.send('ping');">ping</button>
+<script>
+    function displayOutput(output) {
+        document.getElementById('response').innerHTML = output;
+    }
+    const ws = new WebSocket('ws://localhost:8080');
+    ws.onmessage = function(message) {
+        displayOutput(message.data);
+        switch (message.data) {
+            case 'ping': ws.send('pong'); break;
+        }
+    }
+</script>
+</body>
+</html>
