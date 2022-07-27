@@ -51,6 +51,7 @@ public class ServerTest {
             pw.println("ping");
             output = br.readLine();
             assertEquals("pong", output);
+            System.out.println("Client received: " + output);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

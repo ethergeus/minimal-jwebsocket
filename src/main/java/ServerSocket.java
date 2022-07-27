@@ -24,4 +24,9 @@ public class ServerSocket extends java.net.ServerSocket {
         implAccept(s);
         return s;
     }
+
+    protected final void implAccept(Socket s) throws IOException {
+        super.implAccept(s);
+        s.createPreProcessors();
+    }
 }
