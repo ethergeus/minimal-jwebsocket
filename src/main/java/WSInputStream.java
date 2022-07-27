@@ -3,7 +3,6 @@ import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -80,7 +79,6 @@ public class WSInputStream extends java.io.InputStream implements Runnable {
         for (int i = 0; i < 4; i++) key[i] = (byte) in.read();
         message = new byte[len];
         for (int i = 0; i < len; i++) message[i] = (byte) (in.read() ^ key[i & 0x3]);
-        System.out.println(new String(message));
         return new String(message);
     }
 
