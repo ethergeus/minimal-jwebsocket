@@ -12,14 +12,14 @@ public class WSInputStream extends java.io.InputStream implements Runnable {
     private final Socket socket;
     private final java.io.InputStream in;
     private final OutputStream out;
-    private InputStream pipedIn;
+    private final PipedInputStream pipedIn;
     private final PipedOutputStream pipedOut;
     public WSInputStream(Socket s, java.io.InputStream in, OutputStream out) throws IOException {
         this.socket = s;
         this.in = in;
         this.out = out;
-        this.pipedOut = new PipedOutputStream();
-        this.pipedIn = new PipedInputStream(pipedOut);
+        this.pipedIn = new PipedInputStream();
+        this.pipedOut = new PipedOutputStream(pipedIn);
         new Thread(this).start();
     }
 
