@@ -1,9 +1,19 @@
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
 import java.io.*;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class TestServer implements Runnable {
+    private static final int SERVER_PORT = 8080;
     private ServerSocket socket;
+
+    public static void main(String[] args) {
+        TestServer server = new TestServer();
+        server.connect(SERVER_PORT);
+        server.start();
+    }
 
     public void connect(int port) {
         try {

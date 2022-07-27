@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f11f0e58-374e-4a76-aa61-da2ca80b938a" name="Changes" comment="Add pre-processor thread piped input and output stream whilst retaining passing of regression tests">
+    <list default="true" id="f11f0e58-374e-4a76-aa61-da2ca80b938a" name="Changes" comment="Minor refactoring">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/WSInputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WSInputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ServerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +46,21 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.ServerTest.backwardsCompatibleResponseTest">
+    <configuration name="ServerTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ServerTest" />
+      <module name="minimal-jwebsocket" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TestServer" />
+      <module name="minimal-jwebsocket" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServerTest.backwardsCompatibleResponseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="minimal-jwebsocket" />
       <option name="PACKAGE_NAME" value="" />
@@ -57,6 +74,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.ServerTest.backwardsCompatibleResponseTest" />
+        <item itemvalue="Application.TestServer" />
+        <item itemvalue="Application.ServerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -70,7 +89,7 @@
       <updated>1658864251888</updated>
       <workItem from="1658864261895" duration="612000" />
       <workItem from="1658865377979" duration="5676000" />
-      <workItem from="1658909361287" duration="6088000" />
+      <workItem from="1658909361287" duration="7166000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1658864420795</created>
@@ -100,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658920066736</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Minor refactoring">
+      <created>1658920132507</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1658920132507</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,6 +148,7 @@
     <MESSAGE value="Establish regression test for java.net.Socket backwards compatibility, add test for WIP websocket implementation" />
     <MESSAGE value="Add pre-processor stub while passing regression test for regular socket communication" />
     <MESSAGE value="Add pre-processor thread piped input and output stream whilst retaining passing of regression tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add pre-processor thread piped input and output stream whilst retaining passing of regression tests" />
+    <MESSAGE value="Minor refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor refactoring" />
   </component>
 </project>

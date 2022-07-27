@@ -3,8 +3,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.logging.LogEntries;
 import org.openqa.selenium.logging.LogType;
 
@@ -23,7 +23,7 @@ public class ServerTest {
         TestServer server = new TestServer();
         server.connect(SERVER_PORT);
         server.start();
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver = new FirefoxDriver();
         driver.get(WS_HTML_CLIENT);
     }
 
@@ -59,9 +59,9 @@ public class ServerTest {
 
     @Test
     public void websocketResponseTest() {
-        ChromeOptions options = new ChromeOptions();
+        FirefoxOptions options = new FirefoxOptions();
         options.addArguments("--headless");
-        WebDriver driver = new ChromeDriver(options);
+        WebDriver driver = new FirefoxDriver(options);
         LogEntries logs = driver.manage().logs().get(LogType.BROWSER);
         driver.get(WS_HTML_CLIENT);
         driver.findElement(By.id("ping")).click();

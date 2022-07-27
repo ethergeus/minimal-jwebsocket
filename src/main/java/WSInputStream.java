@@ -59,7 +59,8 @@ public class WSInputStream extends java.io.InputStream implements Runnable {
             String input;
             if ((input = sc.next()).startsWith("GET")) {
                 // Upon receiving a GET request, attempt to upgrade the connection to type websocket
-                Matcher match = Pattern.compile("Sec-WebSocket-Key: (.*)").matcher(input);
+                String data = sc.useDelimiter("\\r\\n\\r\\n").next();
+                Matcher match = Pattern.compile("Sec-WebSocket-Key: (.*)").matcher(data);
                 match.find();
                 byte[] response = ("HTTP/1.1 101 Switching Protocols\r\n"
                         + "Connection: Upgrade\r\n"
