@@ -43,7 +43,7 @@ public class TestServer implements Runnable {
                 if ((input = sc.next()) == null) break;
                 System.out.println("Server received: " + input);
                 switch (input) {
-                    case "ping" -> pw.println("pong");
+                    case "ping": pw.println("pong"); break;
                 }
             }
             this.stop();

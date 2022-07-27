@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f11f0e58-374e-4a76-aa61-da2ca80b938a" name="Changes" comment="Implement encoding and pass websocket response unit test">
+    <list default="true" id="f11f0e58-374e-4a76-aa61-da2ca80b938a" name="Changes" comment="Add Maven Surefire plugin, ensuring tests are run when packaging">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +45,10 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
   }
 }]]></component>
   <component name="RunManager" selected="Application.TestServer">
@@ -111,7 +116,7 @@
       <workItem from="1658864261895" duration="612000" />
       <workItem from="1658865377979" duration="5676000" />
       <workItem from="1658909361287" duration="17831000" />
-      <workItem from="1658938721312" duration="7717000" />
+      <workItem from="1658938721312" duration="8230000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1658864420795</created>
@@ -190,7 +195,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658957716986</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add Maven Surefire plugin, ensuring tests are run when packaging">
+      <created>1658959521046</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1658959521046</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,6 +230,7 @@
     <MESSAGE value="Minor refactoring" />
     <MESSAGE value="Add encoding thread and stub method" />
     <MESSAGE value="Implement encoding and pass websocket response unit test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement encoding and pass websocket response unit test" />
+    <MESSAGE value="Add Maven Surefire plugin, ensuring tests are run when packaging" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Maven Surefire plugin, ensuring tests are run when packaging" />
   </component>
 </project>
