@@ -1,6 +1,3 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
 import java.io.*;
 import java.util.NoSuchElementException;
 import java.util.Scanner;

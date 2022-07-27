@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f11f0e58-374e-4a76-aa61-da2ca80b938a" name="Changes" comment="Minor refactoring">
+    <list default="true" id="f11f0e58-374e-4a76-aa61-da2ca80b938a" name="Changes" comment="Implement browser handshaking">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/WSInputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WSInputStream.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ServerTest.java" afterDir="false" />
@@ -89,7 +89,7 @@
       <updated>1658864251888</updated>
       <workItem from="1658864261895" duration="612000" />
       <workItem from="1658865377979" duration="5676000" />
-      <workItem from="1658909361287" duration="7166000" />
+      <workItem from="1658909361287" duration="11622000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1658864420795</created>
@@ -126,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658920132507</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Implement browser handshaking">
+      <created>1658921422418</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1658921422418</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +156,7 @@
     <MESSAGE value="Add pre-processor stub while passing regression test for regular socket communication" />
     <MESSAGE value="Add pre-processor thread piped input and output stream whilst retaining passing of regression tests" />
     <MESSAGE value="Minor refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor refactoring" />
+    <MESSAGE value="Implement browser handshaking" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement browser handshaking" />
   </component>
 </project>

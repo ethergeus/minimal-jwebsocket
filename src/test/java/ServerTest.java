@@ -44,14 +44,11 @@ public class ServerTest {
      */
     @Test
     public void backwardsCompatibleResponseTest() {
-        String output;
         try (var client = new java.net.Socket(InetAddress.getLocalHost(), server.getPort());
              var br = new BufferedReader(new InputStreamReader(client.getInputStream()));
              var pw = new PrintWriter(new OutputStreamWriter(client.getOutputStream()), true)) {
             pw.println("ping");
-            output = br.readLine();
-            System.out.println("Client received: " + output);
-            assertEquals("pong", output);
+            assertEquals("pong", br.readLine());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
