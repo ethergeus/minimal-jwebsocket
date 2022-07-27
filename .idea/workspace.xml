@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f11f0e58-374e-4a76-aa61-da2ca80b938a" name="Changes" comment="Replace asserts with IOException">
+    <list default="true" id="f11f0e58-374e-4a76-aa61-da2ca80b938a" name="Changes" comment="Minor refactoring">
+      <change afterPath="$PROJECT_DIR$/src/main/java/WSOutputStream.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Socket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Socket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/WSInputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WSInputStream.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +89,7 @@
       <updated>1658864251888</updated>
       <workItem from="1658864261895" duration="612000" />
       <workItem from="1658865377979" duration="5676000" />
-      <workItem from="1658909361287" duration="12142000" />
+      <workItem from="1658909361287" duration="16223000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1658864420795</created>
@@ -145,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658926770741</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Minor refactoring">
+      <created>1658927122497</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1658927122497</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,10 +176,10 @@
     <MESSAGE value="Establish regression test for java.net.Socket backwards compatibility, add test for WIP websocket implementation" />
     <MESSAGE value="Add pre-processor stub while passing regression test for regular socket communication" />
     <MESSAGE value="Add pre-processor thread piped input and output stream whilst retaining passing of regression tests" />
-    <MESSAGE value="Minor refactoring" />
     <MESSAGE value="Implement browser handshaking" />
     <MESSAGE value="Add client-to-server communication using websocket protocol" />
     <MESSAGE value="Replace asserts with IOException" />
-    <option name="LAST_COMMIT_MESSAGE" value="Replace asserts with IOException" />
+    <MESSAGE value="Minor refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor refactoring" />
   </component>
 </project>

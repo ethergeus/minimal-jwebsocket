@@ -1,9 +1,6 @@
 import java.io.*;
 import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -11,14 +8,12 @@ import java.util.regex.Pattern;
 
 public class WSInputStream extends java.io.InputStream implements Runnable {
     private final Socket socket;
-    private final java.io.InputStream in;
-    private final OutputStream out;
+    private final InputStream in;
     private final PipedInputStream pipedIn;
     private final PipedOutputStream pipedOut;
-    public WSInputStream(Socket s, java.io.InputStream in, OutputStream out) throws IOException {
+    public WSInputStream(Socket s, InputStream in) throws IOException {
         this.socket = s;
         this.in = in;
-        this.out = out;
         this.pipedIn = new PipedInputStream();
         this.pipedOut = new PipedOutputStream(pipedIn);
         new Thread(this).start();
@@ -90,26 +85,13 @@ public class WSInputStream extends java.io.InputStream implements Runnable {
                 // Upon receiving a GET request, attempt to upgrade the connection to type websocket
                 String data = sc.useDelimiter("\\r\\n\\r\\n").next();
                 Matcher match = Pattern.compile("Sec-WebSocket-Key: (.*)").matcher(data);
-                match.find();
-                byte[] response = ("HTTP/1.1 101 Switching Protocols\r\n"
-                        + "Connection: Upgrade\r\n"
-                        + "Upgrade: websocket\r\n"
-                        + "Sec-WebSocket-Accept: "
-                        + Base64.getEncoder().encodeToString(MessageDigest.getInstance("SHA-1").digest((match.group(1) + "258EAFA5-E914-47DA-95CA-C5AB0DC85B11").getBytes(StandardCharsets.UTF_8)))
-                        + "\r\n\r\n").getBytes(StandardCharsets.UTF_8);
-                System.out.println("Upgrading socket connection for " + socket + " -- switching protocols to websocket");
-                out.write(response, 0, response.length);
-                while (!socket.isClosed()) {
-                    pw.println(decodeMessage());
-                }
+                if (match.find()) socket.upgradeWebsocket(match.group(1));
+                while (!socket.isClosed()) pw.println(decodeMessage());
             } else {
                 // Regular socket connection, replace piped input stream with regular input and stop thread
                 System.out.println("Websocket handshake did not occur -- not upgrading " + socket + " to websocket connection");
                 pw.println(input);
-                while (!socket.isClosed()) {
-                    if ((input = sc.next()) == null) break;
-                    pw.println(input);
-                }
+                while (!socket.isClosed()) pw.println(sc.nextLine());
             }
         } catch (NoSuchElementException e) {
             System.out.println("Socket connection closed for " + socket + " -- stopping websocket stream pre-processor thread");
