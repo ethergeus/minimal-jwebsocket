@@ -62,10 +62,9 @@ public class WSInputStream extends java.io.InputStream implements Runnable {
     public String decodeMessage() throws IOException {
         byte[] message;
         int head = in.read(); // First byte gives information on the message itself
-        int FIN = (head >> 7) & 1;
-        assert FIN == 1; // FIN 1 means this is the whole message
-        int opCode = head & (0xf); // Get first 4 bits
-        assert opCode == 1; // Opcode 0x1 means this is a text
+        int FIN = (head >> 7) & 1; // Get most significant bit, FIN 1 means this is the whole message
+        int opCode = head & (0xf); // Get first 4 bits, Opcode 0x1 means this is a text
+        if (FIN != 1 || opCode != 1) throw new IOException(); // TODO: Implement various Opcodes
         int len = in.read() - 128; // Second byte gives information on the length of the message
         if (len > 125) {
             // If the second byte minus 128 is between 0 and 125, this is the length of the message
