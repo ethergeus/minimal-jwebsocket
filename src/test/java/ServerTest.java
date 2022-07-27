@@ -50,8 +50,8 @@ public class ServerTest {
              var pw = new PrintWriter(new OutputStreamWriter(client.getOutputStream()), true)) {
             pw.println("ping");
             output = br.readLine();
-            assertEquals("pong", output);
             System.out.println("Client received: " + output);
+            assertEquals("pong", output);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -21,7 +21,7 @@ public class Socket extends java.net.Socket {
      * creation of the object a connection has not yet been established, this happens during the ImplAccept() call.
      */
     public void createPreProcessors() throws IOException {
-        WSInputStream = new WSInputStream(super.getInputStream(), super.getOutputStream());
+        WSInputStream = new WSInputStream(this, super.getInputStream(), super.getOutputStream());
     }
 
     @Override
