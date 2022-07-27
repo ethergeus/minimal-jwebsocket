@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f11f0e58-374e-4a76-aa61-da2ca80b938a" name="Changes" comment="Minor refactoring">
-      <change afterPath="$PROJECT_DIR$/src/main/java/WSOutputStream.java" afterDir="false" />
+    <list default="true" id="f11f0e58-374e-4a76-aa61-da2ca80b938a" name="Changes" comment="Add encoding thread and stub method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Socket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Socket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/WSInputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WSInputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WSOutputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WSOutputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ServerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestWSClient.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestWSClient.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +47,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.TestServer">
+  <component name="RunManager" selected="JUnit.ServerTest">
     <configuration name="ServerTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ServerTest" />
       <module name="minimal-jwebsocket" />
@@ -61,6 +62,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ServerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="minimal-jwebsocket" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ServerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ServerTest.backwardsCompatibleResponseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="minimal-jwebsocket" />
       <option name="PACKAGE_NAME" value="" />
@@ -71,11 +81,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ServerTest.websocketResponseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="minimal-jwebsocket" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ServerTest" />
+      <option name="METHOD_NAME" value="websocketResponseTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestServer" />
-        <item itemvalue="JUnit.ServerTest.backwardsCompatibleResponseTest" />
+        <item itemvalue="JUnit.ServerTest" />
         <item itemvalue="Application.ServerTest" />
+        <item itemvalue="JUnit.ServerTest.websocketResponseTest" />
+        <item itemvalue="JUnit.ServerTest.backwardsCompatibleResponseTest" />
+        <item itemvalue="Application.TestServer" />
       </list>
     </recent_temporary>
   </component>
@@ -89,7 +111,8 @@
       <updated>1658864251888</updated>
       <workItem from="1658864261895" duration="612000" />
       <workItem from="1658865377979" duration="5676000" />
-      <workItem from="1658909361287" duration="16223000" />
+      <workItem from="1658909361287" duration="17831000" />
+      <workItem from="1658938721312" duration="6050000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1658864420795</created>
@@ -154,7 +177,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658927122497</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Add encoding thread and stub method">
+      <created>1658931932679</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1658931932679</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +210,7 @@
     <MESSAGE value="Add client-to-server communication using websocket protocol" />
     <MESSAGE value="Replace asserts with IOException" />
     <MESSAGE value="Minor refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor refactoring" />
+    <MESSAGE value="Add encoding thread and stub method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add encoding thread and stub method" />
   </component>
 </project>

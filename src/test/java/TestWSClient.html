@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Test WebSocket Client</title>
+    <style>
+        .websocket-communication.disabled {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <p id="response"></p>
-<button id="ping" onclick="ws.send('ping');">ping</button>
+<button class="websocket-communication disabled" id="ping" onclick="ws.send('ping');">ping</button>
 <script>
     function displayOutput(output) {
         document.getElementById('response').innerHTML = output;
@@ -17,6 +22,9 @@
         switch (message.data) {
             case 'ping': ws.send('pong'); break;
         }
+    }
+    ws.onopen = function() {
+        Array.from(document.querySelectorAll('.websocket-communication.disabled')).forEach((el) => el.classList.remove('disabled'));
     }
 </script>
 </body>

@@ -2,15 +2,17 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.logging.LogEntries;
-import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.*;
 import java.net.InetAddress;
 import java.nio.file.Paths;
+import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,14 +20,6 @@ public class ServerTest {
     private static final int SERVER_PORT = 8080;
     private TestServer server;
     private static final String WS_HTML_CLIENT = Paths.get("src", "test", "java", "TestWSClient.html").toUri().toString();
-
-    public static void main(String[] args) {
-        TestServer server = new TestServer();
-        server.connect(SERVER_PORT);
-        server.start();
-        WebDriver driver = new FirefoxDriver();
-        driver.get(WS_HTML_CLIENT);
-    }
 
     @BeforeEach
     public void init() {
@@ -59,10 +53,11 @@ public class ServerTest {
         FirefoxOptions options = new FirefoxOptions();
         options.addArguments("--headless");
         WebDriver driver = new FirefoxDriver(options);
-        LogEntries logs = driver.manage().logs().get(LogType.BROWSER);
         driver.get(WS_HTML_CLIENT);
-        driver.findElement(By.id("ping")).click();
-        assertEquals("pong", driver.findElement(By.id("response")).getText());
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("ping"))).click();
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("response"), "pong"));
         driver.quit();
     }
 }
