@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ServerTest {
     private static final int SERVER_PORT = 8080;
     private TestServer server;
-    private static final String WS_HTML_CLIENT = Paths.get("src", "test", "java", "TestWSClient.html").toUri().toString();
+    private static final String WS_HTML_CLIENT = Paths.get("src", "test", "resources", "TestWSClient.html").toUri().toString();
 
     @BeforeEach
     public void init() {
