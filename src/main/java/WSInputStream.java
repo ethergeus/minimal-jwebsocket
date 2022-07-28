@@ -54,7 +54,7 @@ public class WSInputStream extends java.io.InputStream implements Runnable {
      * Receive and decode requests sent by client, Mozilla has a well-documented implementation on their website
      * Documentation: https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_a_WebSocket_server_in_Java#decoding_messages
      */
-    public String decodeIncomingRequest() throws IOException {
+    public String decodeIncomingTraffic() throws IOException {
         byte[] message;
         int head = in.read(); // First byte gives information on the message itself
         int FIN = (head >> 7) & 1; // Get most significant bit, FIN 1 means this is the whole message
@@ -94,7 +94,7 @@ public class WSInputStream extends java.io.InputStream implements Runnable {
                     upgraded = true;
                 }
             } else pw.println(data);
-            while (!socket.isClosed()) pw.println(upgraded ? decodeIncomingRequest() : sc.nextLine());
+            while (!socket.isClosed()) pw.println(upgraded ? decodeIncomingTraffic() : sc.nextLine());
         } catch (NoSuchElementException | IOException e) {
             System.out.println("Socket connection closed for " + socket + " -- stopping websocket input stream pre-processor thread");
         } catch (NoSuchAlgorithmException e) {

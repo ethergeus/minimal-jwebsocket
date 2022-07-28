@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f11f0e58-374e-4a76-aa61-da2ca80b938a" name="Changes" comment="Change permissions in maven-publish.yml">
+    <list default="true" id="f11f0e58-374e-4a76-aa61-da2ca80b938a" name="Changes" comment="Refactor websocket input and output stream">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/WSInputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WSInputStream.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/WSOutputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WSOutputStream.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ServerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +126,7 @@
       <workItem from="1659002935432" duration="1845000" />
       <workItem from="1659015617726" duration="2484000" />
       <workItem from="1659020307077" duration="142000" />
-      <workItem from="1659021896328" duration="5815000" />
+      <workItem from="1659021896328" duration="6231000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1658864420795</created>
@@ -256,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659018014285</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Refactor websocket input and output stream">
+      <created>1659027878931</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1659027878931</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,6 +296,7 @@
     <MESSAGE value="Create CHANGELOG.md" />
     <MESSAGE value="Add GitHub Maven Repository to pom.xml" />
     <MESSAGE value="Change permissions in maven-publish.yml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change permissions in maven-publish.yml" />
+    <MESSAGE value="Refactor websocket input and output stream" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor websocket input and output stream" />
   </component>
 </project>

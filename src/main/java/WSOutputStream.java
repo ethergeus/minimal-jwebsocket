@@ -38,7 +38,7 @@ public class WSOutputStream extends java.io.OutputStream implements Runnable {
      * Documentation: https://www.rfc-editor.org/rfc/rfc6455#section-6.1
      * Example: https://stackoverflow.com/questions/8125507/how-can-i-send-and-receive-websocket-messages-on-the-server-side
      */
-    private byte[] encodeMessage(String input) {
+    private byte[] encodeOutgoingTraffic(String input) {
         int len = input.length();
         int scan = 0;
         /*
@@ -76,12 +76,10 @@ public class WSOutputStream extends java.io.OutputStream implements Runnable {
             } else out.write((data + '\n').getBytes());
             while (!socket.isClosed()) {
                 data = sc.nextLine();
-                out.write(upgraded ? encodeMessage(data) : (data + '\n').getBytes());
+                out.write(upgraded ? encodeOutgoingTraffic(data) : (data + '\n').getBytes());
             }
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException | IOException e) {
             System.out.println("Socket connection closed for " + socket + " -- stopping websocket output stream pre-processor thread");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 }
