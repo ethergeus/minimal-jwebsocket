@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f11f0e58-374e-4a76-aa61-da2ca80b938a" name="Changes" comment="Change permissions in maven-publish.yml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WSInputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WSInputStream.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/WSOutputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/WSOutputStream.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ServerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ServerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/TestWSClient.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/TestWSClient.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/TestServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/TestServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +59,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.TestServer">
+  <component name="RunManager" selected="JUnit.ServerTest">
     <configuration name="ServerTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ServerTest" />
       <module name="minimal-jwebsocket" />
@@ -103,11 +105,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestServer" />
         <item itemvalue="JUnit.ServerTest" />
-        <item itemvalue="Application.ServerTest" />
+        <item itemvalue="Application.TestServer" />
         <item itemvalue="JUnit.ServerTest.websocketResponseTest" />
         <item itemvalue="JUnit.ServerTest.backwardsCompatibleResponseTest" />
+        <item itemvalue="Application.ServerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -126,6 +128,7 @@
       <workItem from="1659002935432" duration="1845000" />
       <workItem from="1659015617726" duration="2484000" />
       <workItem from="1659020307077" duration="142000" />
+      <workItem from="1659021896328" duration="5815000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1658864420795</created>

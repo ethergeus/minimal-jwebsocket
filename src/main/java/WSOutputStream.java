@@ -4,6 +4,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class WSOutputStream extends java.io.OutputStream implements Runnable {
+    private boolean upgraded;
     private final Socket socket;
     private final java.io.OutputStream out;
     private final PipedInputStream pipedIn;
@@ -66,18 +67,19 @@ public class WSOutputStream extends java.io.OutputStream implements Runnable {
 
     @Override
     public void run() {
-        try (var sc = new Scanner(pipedIn); var pw = new PrintWriter(out, true)) {
-            String output;
-            if ((output = sc.nextLine()).startsWith("HTTP/1.1 101 Switching Protocols")) {
+        try (var sc = new Scanner(pipedIn)) {
+            String data;
+            if ((data = sc.nextLine()).startsWith("HTTP/1.1 101 Switching Protocols")) {
                 // Pass complete HTTP/1.1 101 Switching Protocols response, from now on treat connection as websocket
-                out.write((output + '\n' + sc.useDelimiter("\\r\\n\\r\\n").next() + "\r\n\r\n").getBytes());
-                while (!socket.isClosed()) out.write(encodeMessage(sc.nextLine()));
-            } else {
-                pw.println(output);
-                while (!socket.isClosed()) pw.println(sc.nextLine());
+                out.write((data + '\n' + sc.useDelimiter("\\r\\n\\r\\n").next() + "\r\n\r\n").getBytes());
+                upgraded = true;
+            } else out.write((data + '\n').getBytes());
+            while (!socket.isClosed()) {
+                data = sc.nextLine();
+                out.write(upgraded ? encodeMessage(data) : (data + '\n').getBytes());
             }
         } catch (NoSuchElementException e) {
-            System.out.println("Socket connection closed for " + socket + " -- stopping websocket stream pre-processor thread");
+            System.out.println("Socket connection closed for " + socket + " -- stopping websocket output stream pre-processor thread");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

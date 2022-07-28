@@ -41,19 +41,16 @@ public class TestServer implements Runnable {
             String input;
             while (!socket.isClosed()) {
                 if ((input = sc.next()) == null) break;
-                System.out.println("Server received: " + input);
                 switch (input) {
-                    case "ping": pw.println("pong"); break;
+                    case "ping":
+                        pw.println("pong");
+                        break;
+                    default:
+                        System.out.println(input);
                 }
             }
-            this.stop();
         } catch (NoSuchElementException e) {
-            System.out.println("Client disconnected");
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            this.stop();
+            System.out.println("Client disconnected -- quitting");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
