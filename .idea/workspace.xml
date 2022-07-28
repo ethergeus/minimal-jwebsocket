@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f11f0e58-374e-4a76-aa61-da2ca80b938a" name="Changes" comment="Create README.md">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f11f0e58-374e-4a76-aa61-da2ca80b938a" name="Changes" comment="Scope Selenium, Log4J and SLF4J API to test" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -122,6 +120,7 @@
       <workItem from="1658909361287" duration="17831000" />
       <workItem from="1658938721312" duration="9432000" />
       <workItem from="1659002935432" duration="1845000" />
+      <workItem from="1659015617726" duration="462000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1658864420795</created>
@@ -221,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659008551520</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Scope Selenium, Log4J and SLF4J API to test">
+      <created>1659015738339</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1659015738339</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,6 +258,7 @@
     <MESSAGE value="Add Maven Surefire plugin, ensuring tests are run when packaging" />
     <MESSAGE value="Change to JDK Temurin 11" />
     <MESSAGE value="Create README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create README.md" />
+    <MESSAGE value="Scope Selenium, Log4J and SLF4J API to test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Scope Selenium, Log4J and SLF4J API to test" />
   </component>
 </project>
