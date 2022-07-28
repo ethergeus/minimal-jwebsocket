@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f11f0e58-374e-4a76-aa61-da2ca80b938a" name="Changes" comment="Create CHANGELOG.md">
+    <list default="true" id="f11f0e58-374e-4a76-aa61-da2ca80b938a" name="Changes" comment="Add GitHub Maven Repository to pom.xml">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/maven-publish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/maven-publish.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +123,7 @@
       <workItem from="1658909361287" duration="17831000" />
       <workItem from="1658938721312" duration="9432000" />
       <workItem from="1659002935432" duration="1845000" />
-      <workItem from="1659015617726" duration="1171000" />
+      <workItem from="1659015617726" duration="1823000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1658864420795</created>
@@ -237,7 +237,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659017055321</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Add GitHub Maven Repository to pom.xml">
+      <created>1659017310189</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1659017310189</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +277,7 @@
     <MESSAGE value="Create README.md" />
     <MESSAGE value="Scope Selenium, Log4J and SLF4J API to test" />
     <MESSAGE value="Create CHANGELOG.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create CHANGELOG.md" />
+    <MESSAGE value="Add GitHub Maven Repository to pom.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add GitHub Maven Repository to pom.xml" />
   </component>
 </project>
