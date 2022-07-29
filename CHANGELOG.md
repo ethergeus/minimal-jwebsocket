@@ -1,8 +1,11 @@
 # Changelog
 
-## [1.0-1] - 2022-07-28
+## [1.0-2] - 2022-07-29
 
-This is the first release of the minimal-jwebsocket Java library.
+Revision to initial release.
+
+### Changes
+- Fixed buffer underflow issue that occurred when sending messages longer than 125 bits
 
 ### Features
 - Drop-in replacement for `java.net` `ServerSocket` and `Socket` classes, able to interact with regular java.net Socket clients and web browsers

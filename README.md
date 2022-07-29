@@ -22,30 +22,28 @@ import com.antonowycz.Socket; // Extension of java.net.Socket
 ...
 public class TestServer implements Runnable {
     ...
-    // From TestServer.class in src/test/java
     @Override
     public void run() {
         while (!socket.isClosed()) {
+            // Accept a client
             try (Socket client = socket.accept();
                 var br = new BufferedReader(new InputStreamReader(client.getInputStream()));
                 var pw = new PrintWriter(client.getOutputStream(), true);
                 var sc = new Scanner(br)) {
-                String input;
+                // After creating a buffered reader, scanner and printerwriter for the client
                 while (!socket.isClosed()) {
-                    if ((input = sc.next()) == null) break;
-                    System.out.println("Server received: " + input);
+                    String input;
+                    if ((input = sc.next()) == null) break; // Read input from scanner
                     switch (input) {
-                        case "ping": pw.println("pong"); break;
+                        case "ping":
+                            pw.println("pong"); // Write output to printwriter
+                            break;
+                        default:
+                            System.out.println("Received: " + input);
                     }
                 }
-                this.stop();
             } catch (NoSuchElementException e) {
-                System.out.println("Client disconnected");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            try {
-                this.stop();
+                System.out.println("Client disconnected"); // Scanner is empty -- client disconnected
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
