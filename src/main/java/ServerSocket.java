@@ -11,11 +11,12 @@ public class ServerSocket extends java.net.ServerSocket {
         super(port);
     }
 
+    /*
+     * Accept a new connection to the current ServerSocket object.
+     * Adapted from java.net.ServerSocket to use the local Socket class instead of java.net.Socket
+     */
     @Override
     public Socket accept() throws IOException {
-        /*
-         * Source material from java.net.ServerSocket, adapted to use the local Socket class instead of java.net.Socket
-         */
         if (isClosed())
             throw new SocketException("Socket is closed");
         if (!isBound())
@@ -25,6 +26,10 @@ public class ServerSocket extends java.net.ServerSocket {
         return s;
     }
 
+    /*
+     * Call the java.net.Socket.implAccept() method to create input and output stream, then create pre-processors for
+     * both streams which will handle the encoding and decoding for when the connection is upgraded to type websocket.
+     */
     protected final void implAccept(Socket s) throws IOException {
         super.implAccept(s);
         s.createPreProcessors();

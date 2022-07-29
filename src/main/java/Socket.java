@@ -27,8 +27,8 @@ public class Socket extends java.net.Socket {
      * creation of the object a connection has not yet been established, this happens during the ImplAccept() call.
      */
     public void createPreProcessors() throws IOException {
-        in = new WSInputStream(this, super.getInputStream());
-        out = new WSOutputStream(this, super.getOutputStream());
+        in = new WSInputStream(this, super.getInputStream()); // Create pre-processor thread for the input stream
+        out = new WSOutputStream(this, super.getOutputStream()); // Create pre-processor thread for the output stream
     }
 
     @Override
@@ -36,7 +36,12 @@ public class Socket extends java.net.Socket {
         return (isWebSocketConnection ? "Web" : "") + super.toString();
     }
 
+    /*
+     * Upgrade the current socket to a websocket connection by sending an HTTP/1.1 101 Switching Protocol response.
+     * Documentation: https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_a_WebSocket_server_in_Java#handshaking
+     */
     public void upgradeWebsocket(String key) throws NoSuchAlgorithmException, IOException {
+        // Build response
         byte[] response = ("HTTP/1.1 101 Switching Protocols\r\n"
                 + "Connection: Upgrade\r\n"
                 + "Upgrade: websocket\r\n"
@@ -45,10 +50,14 @@ public class Socket extends java.net.Socket {
                         MessageDigest.getInstance("SHA-1").digest(
                                 (key + "258EAFA5-E914-47DA-95CA-C5AB0DC85B11").getBytes(StandardCharsets.UTF_8)))
                 + "\r\n\r\n").getBytes(StandardCharsets.UTF_8);
-        out.write(response);
-        isWebSocketConnection = true;
+        out.write(response); // Send response
+        isWebSocketConnection = true; // Treat this connection as upgraded
     }
 
+    /*
+     * Returns whether the current socket has been upgraded to a websocket connection,
+     * implies the pre-processors should encode and decode the raw streams.
+     */
     public boolean isWebSocketConnection() {
         return isWebSocketConnection;
     }

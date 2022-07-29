@@ -67,6 +67,10 @@ public void backwardsCompatibleResponseTest() {
             var pw = new PrintWriter(new OutputStreamWriter(client.getOutputStream()), true)) {
         pw.println("ping");
         assertEquals("pong", br.readLine());
+        pw.println("a".repeat(126));
+        assertEquals("b".repeat(126), br.readLine());
+        pw.println("a".repeat(65536));
+        assertEquals("b".repeat(65536), br.readLine());
     } catch (IOException e) {
         throw new RuntimeException(e);
     }
@@ -79,6 +83,8 @@ The web browser communication is tested through the Selenium UI testing toolkit,
 ```html
 <p id="response"></p>
 <button class="websocket-communication disabled" id="ping" onclick="ws.send('ping');">ping</button>
+<button class="websocket-communication disabled" id="long2b" onclick="ws.send('a'.repeat(126));">long2b</button>
+<button class="websocket-communication disabled" id="long8b" onclick="ws.send('a'.repeat(65536));">long8b</button>
 <script>
     function displayOutput(output) {
         document.getElementById('response').innerHTML = output;
@@ -100,15 +106,20 @@ The following unit test from `src/test/ServerTest.class` ensures the handshake a
 
 ```java
 @Test
-public void websocketResponseTest() {
+public void websocketResponseTest() throws InterruptedException {
+    Thread.sleep(2000);
     FirefoxOptions options = new FirefoxOptions();
     options.addArguments("--headless");
     WebDriver driver = new FirefoxDriver(options);
     driver.get(WS_HTML_CLIENT);
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     wait.until(webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     wait.until(ExpectedConditions.elementToBeClickable(By.id("ping"))).click();
     wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("response"), "pong"));
+    driver.findElement(By.id("long2b")).click();
+    wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("response"), "b".repeat(126)));
+    driver.findElement(By.id("long8b")).click();
+    wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("response"), "b".repeat(65536)));
     driver.quit();
 }
 ```
