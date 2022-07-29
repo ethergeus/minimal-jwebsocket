@@ -43,9 +43,10 @@ public class ServerTest {
              var pw = new PrintWriter(new OutputStreamWriter(client.getOutputStream()), true)) {
             pw.println("ping");
             assertEquals("pong", br.readLine());
-            // We test this a second time because the background process will not be active this time
-            pw.println("ping");
-            assertEquals("pong", br.readLine());
+            pw.println("a".repeat(126));
+            assertEquals("b".repeat(126), br.readLine());
+            pw.println("a".repeat(65536));
+            assertEquals("b".repeat(65536), br.readLine());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
