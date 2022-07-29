@@ -67,12 +67,13 @@ public class WSInputStream extends java.io.InputStream implements Runnable {
         if (len > 125) {
             // If the second byte minus 128 is between 0 and 125, this is the length of the message
             byte[] arr;
-            int scan = len == 126 ? 2 : 8;
+            int numLenBits = len == 126 ? 2 : 8;
             // If it is 126, the following 2 bytes (16-bit unsigned integer)
             // If 127, the following 8 bytes (64-bit unsigned integer, the most significant bit MUST be 0)
-            arr = new byte[scan];
-            for (int i = 0; i < scan; i++) arr[i] = (byte) in.read();
-            len = ByteBuffer.wrap(arr).getInt();
+            arr = new byte[numLenBits];
+            for (int i = 0; i < numLenBits; i++) arr[i] = (byte) in.read();
+            ByteBuffer bb = ByteBuffer.wrap(arr);
+            len = len == 126 ? (int) bb.getShort() : (int) bb.getLong();
         }
         byte[] key = new byte[4];
         for (int i = 0; i < 4; i++) key[i] = (byte) in.read();

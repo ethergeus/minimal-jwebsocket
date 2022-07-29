@@ -40,28 +40,33 @@ public class WSOutputStream extends java.io.OutputStream implements Runnable {
      */
     private byte[] encodeOutgoingTraffic(String input) {
         int len = input.length();
-        int scan = 0;
+        int lenBit = len;
+        int numLenBits = 0;
         /*
          * If len <= 125 the message length can be encoded in a single byte.
          * The most significant bit (128) implies whether the message is encoded or not,
          * this is not mandatory for server-to-client traffic but is for client-to-server communication.
          */
-        if (len > 125) {
-            if (len > 65535) {
-                len = 127;
-                scan = 8; // The following 8 bytes contain the message length
+        if (lenBit > 125) {
+            if (lenBit > 65535) {
+                lenBit = 127;
+                numLenBits = 8; // The following 8 bytes contain the message length
             } else {
-                len = 126;
-                scan = 2; // The following 2 bytes contain the message length
+                lenBit = 126;
+                numLenBits = 2; // The following 2 bytes contain the message length
             }
         }
-        byte[] encoded = new byte[2 + scan + input.length()];
+        byte[] encoded = new byte[2 + numLenBits + input.length()];
+        if (lenBit > 125) {
+            // Create a set of bytes from an integer and copy said bytes to the encoded byte array
+            ByteBuffer bb = ByteBuffer.allocate(numLenBits);
+            if (lenBit == 126) bb.putShort((short) len); else bb.putLong(len);
+            System.arraycopy(bb.array(), 0, encoded, 2, numLenBits);
+        }
         encoded[0] = (byte) 129; // 10000001 for a text frame
-        encoded[1] = (byte) len; // 0 - 125 for actual message length, 126 for 2 bytes and 127 for 8 bytes
-        // Create a set of bytes from an integer and copy said bytes to the encoded byte array
-        if (scan > 0) System.arraycopy(ByteBuffer.allocate(scan).putInt(input.length()).array(), 0, encoded, 2, scan);
+        encoded[1] = (byte) lenBit; // 0 - 125 for actual message length, 126 for 2 bytes and 127 for 8 bytes
         // Add the bytes of the actual message to the encoded byte array
-        System.arraycopy(input.getBytes(), 0, encoded, 2 + scan, input.length());
+        System.arraycopy(input.getBytes(), 0, encoded, 2 + numLenBits, len);
         return encoded;
     }
 

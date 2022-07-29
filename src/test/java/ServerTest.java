@@ -51,16 +51,23 @@ public class ServerTest {
         }
     }
 
+    /*
+     * Test communication between the server and web browser client, passing this test implies proper HTTP upgrade to websocket protocl
+     */
     @Test
     public void websocketResponseTest() {
         FirefoxOptions options = new FirefoxOptions();
         options.addArguments("--headless");
         WebDriver driver = new FirefoxDriver(options);
         driver.get(WS_HTML_CLIENT);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
         wait.until(ExpectedConditions.elementToBeClickable(By.id("ping"))).click();
         wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("response"), "pong"));
+        driver.findElement(By.id("long2b")).click();
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("response"), "b".repeat(126)));
+        driver.findElement(By.id("long8b")).click();
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.id("response"), "b".repeat(65536)));
         driver.quit();
     }
 }

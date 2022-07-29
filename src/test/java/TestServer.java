@@ -43,10 +43,22 @@ public class TestServer implements Runnable {
                 if ((input = sc.next()) == null) break;
                 switch (input) {
                     case "ping":
+                        System.out.println("Received ping request -- sending pong response");
                         pw.println("pong");
                         break;
                     default:
-                        System.out.println(input);
+                        switch (input.length()) {
+                            case 126:
+                                System.out.println("Received long request with 2 length bits -- sending back response with 2 length bits");
+                                pw.println("b".repeat(126));
+                                break;
+                            case 65536:
+                                System.out.println("Received long request with 8 length bits -- sending back response with 8 length bits");
+                                pw.println("b".repeat(65536));
+                                break;
+                            default:
+                                System.out.println(input);
+                        }
                 }
             }
         } catch (NoSuchElementException e) {
