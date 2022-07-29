@@ -7,7 +7,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class WSInputStream extends java.io.InputStream implements Runnable {
-    private boolean upgraded;
     private final Socket socket;
     private final InputStream in;
     private final PipedInputStream pipedIn;
@@ -91,15 +90,10 @@ public class WSInputStream extends java.io.InputStream implements Runnable {
                 // Upon receiving an HTTP GET request, attempt to upgrade the connection to type websocket
                 data = sc.useDelimiter("\\r\\n\\r\\n").next();
                 Matcher match = Pattern.compile("Sec-WebSocket-Key: (.*)").matcher(data);
-                if (match.find()) {
-                    socket.upgradeWebsocket(match.group(1));
-                    upgraded = true;
-                }
+                if (match.find()) socket.upgradeWebsocket(match.group(1));
             } else pw.println(data);
-            while (!socket.isClosed()) pw.println(upgraded ? decodeIncomingTraffic() : sc.nextLine());
-        } catch (NoSuchElementException | IOException e) {
-            System.out.println("Socket connection closed for " + socket + " -- stopping websocket input stream pre-processor thread");
-        } catch (NoSuchAlgorithmException e) {
+            while (!socket.isClosed()) pw.println(socket.isWebSocketConnection() ? decodeIncomingTraffic() : sc.nextLine());
+        } catch (NoSuchElementException | IOException ignored) { /* Client disconnected */ } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
     }

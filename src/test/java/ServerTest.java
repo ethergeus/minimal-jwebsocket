@@ -56,7 +56,8 @@ public class ServerTest {
      * Test communication between the server and web browser client, passing this test implies proper HTTP upgrade to websocket protocol
      */
     @Test
-    public void websocketResponseTest() {
+    public void websocketResponseTest() throws InterruptedException {
+        Thread.sleep(2000);
         FirefoxOptions options = new FirefoxOptions();
         options.addArguments("--headless");
         WebDriver driver = new FirefoxDriver(options);

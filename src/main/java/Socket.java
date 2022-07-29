@@ -7,6 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 public class Socket extends java.net.Socket {
+    private boolean isWebSocketConnection;
     private WSInputStream in;
     private WSOutputStream out;
     public Socket(SocketImpl socket) throws IOException {
@@ -32,7 +33,7 @@ public class Socket extends java.net.Socket {
 
     @Override
     public String toString() {
-        return super.toString();
+        return (isWebSocketConnection ? "Web" : "") + super.toString();
     }
 
     public void upgradeWebsocket(String key) throws NoSuchAlgorithmException, IOException {
@@ -44,7 +45,11 @@ public class Socket extends java.net.Socket {
                         MessageDigest.getInstance("SHA-1").digest(
                                 (key + "258EAFA5-E914-47DA-95CA-C5AB0DC85B11").getBytes(StandardCharsets.UTF_8)))
                 + "\r\n\r\n").getBytes(StandardCharsets.UTF_8);
-        System.out.println("Upgrading socket connection for " + this + " -- switching protocols to websocket");
         out.write(response);
+        isWebSocketConnection = true;
+    }
+
+    public boolean isWebSocketConnection() {
+        return isWebSocketConnection;
     }
 }

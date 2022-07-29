@@ -4,7 +4,6 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class WSOutputStream extends java.io.OutputStream implements Runnable {
-    private boolean upgraded;
     private final Socket socket;
     private final java.io.OutputStream out;
     private final PipedInputStream pipedIn;
@@ -74,17 +73,11 @@ public class WSOutputStream extends java.io.OutputStream implements Runnable {
     public void run() {
         try (var sc = new Scanner(pipedIn)) {
             String data;
-            if ((data = sc.nextLine()).startsWith("HTTP/1.1 101 Switching Protocols")) {
-                // Pass complete HTTP/1.1 101 Switching Protocols response, from now on treat connection as websocket
+            // If receiving HTTP/1.1 101 Switching Protocols, pass complete request
+            if ((data = sc.nextLine()).startsWith("HTTP/1.1 101 Switching Protocols"))
                 out.write((data + '\n' + sc.useDelimiter("\\r\\n\\r\\n").next() + "\r\n\r\n").getBytes());
-                upgraded = true;
-            } else out.write((data + '\n').getBytes());
-            while (!socket.isClosed()) {
-                data = sc.nextLine();
-                out.write(upgraded ? encodeOutgoingTraffic(data) : (data + '\n').getBytes());
-            }
-        } catch (NoSuchElementException | IOException e) {
-            System.out.println("Socket connection closed for " + socket + " -- stopping websocket output stream pre-processor thread");
-        }
+            else out.write((data + '\n').getBytes());
+            while (!socket.isClosed()) out.write(socket.isWebSocketConnection() ? encodeOutgoingTraffic(sc.nextLine()) : (sc.nextLine() + '\n').getBytes());
+        } catch (NoSuchElementException | IOException ignored) { /* Client disconnected */ }
     }
 }
