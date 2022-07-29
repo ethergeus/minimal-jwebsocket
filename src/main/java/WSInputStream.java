@@ -62,7 +62,8 @@ public class WSInputStream extends java.io.InputStream implements Runnable {
         int RSV1 = (head >> 6) & 1;
         int RSV2 = (head >> 5) & 1;
         int RSV3 = (head >> 4) & 1;
-        if (FIN != 1 || opCode != 1 || RSV1 != 0 || RSV2 != 0 || RSV3 != 0) throw new IOException(); // TODO: Implement various Opcodes
+        if (FIN != 1 || RSV1 != 0 || RSV2 != 0 || RSV3 != 0 || opCode != 1) // TODO: Implement various Opcodes
+            throw new IOException("Unsupported message frame " + String.format("%x", head));
         int len = in.read() - 128; // Second byte gives information on the length of the message
         if (len > 125) {
             // If the second byte minus 128 is between 0 and 125, this is the length of the message
