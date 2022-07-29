@@ -34,7 +34,7 @@ public class ServerTest {
     }
 
     /*
-     * Test basic communication between the server and a mock client through the standard java.net.Socket class.
+     * Test basic communication between the server and a mock client through the standard java.net.Socket class
      */
     @Test
     public void backwardsCompatibleResponseTest() {
@@ -53,7 +53,7 @@ public class ServerTest {
     }
 
     /*
-     * Test communication between the server and web browser client, passing this test implies proper HTTP upgrade to websocket protocl
+     * Test communication between the server and web browser client, passing this test implies proper HTTP upgrade to websocket protocol
      */
     @Test
     public void websocketResponseTest() {
