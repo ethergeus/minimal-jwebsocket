@@ -1,3 +1,8 @@
+package websocket;
+
+import websocket.preprocessors.WSInputStream;
+import websocket.preprocessors.WSOutputStream;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.SocketImpl;

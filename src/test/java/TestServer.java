@@ -1,3 +1,6 @@
+import websocket.ServerSocket;
+import websocket.Socket;
+
 import java.io.*;
 import java.util.NoSuchElementException;
 import java.util.Scanner;

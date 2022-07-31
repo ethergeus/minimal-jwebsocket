@@ -2,7 +2,7 @@
 Minimal Java library for communication between server and web browser, designed as a drop-in replacement for the `java.net` `ServerSocket` and `Socket` classes
 
 ## Features
-- Drop-in replacement for `java.net` `ServerSocket` and `Socket` classes, able to interact with regular java.net Socket clients and web browsers
+- Drop-in replacement for `java.net` `ServerSocket` and `Socket` classes, able to interact with regular `java.net` `Socket` clients and web browsers
 - Automatic HTTP Upgrade handling to WebSocket protocol upon web browser handshake
 - Automatic encoding and decoding of traffic between server and web browser client after WebSocket handshaking with the help of background processes
 
@@ -17,8 +17,8 @@ Minimal Java library for communication between server and web browser, designed 
 Using the library to communicate with web browsers is designed to be as straight-forward as interacting normal `java.net` `Socket` clients. Below is a simple example server allowing only once consecutive client to connect at a time, to handle more than one client at a time implement a client handler class with a thread for every client.
 
 ```java
-import com.antonowycz.ServerSocket; // Extension of java.net.ServerSocket
-import com.antonowycz.Socket; // Extension of java.net.Socket
+import com.antonowycz.websocket.ServerSocket; // Extension of java.net.ServerSocket
+import com.antonowycz.websocket.Socket; // Extension of java.net.Socket
 ...
 public class TestServer implements Runnable {
     ...
@@ -56,8 +56,8 @@ public class TestServer implements Runnable {
 ### Client
 The code above works both when the client on the receiving end is a regular `java.net.Socket` class, or a web browser with the [RFC 6455](https://datatracker.ietf.org/doc/html/rfc6455) protocol implemented, e.g. Chrome 16+, Firefox 11+, IE 10+.
 
-#### Java Socket
-The following unit test from `src/test/java/ServerTest.class` ensures backwards compatibility between the extended `Socket` class and the `java.net.Socket` class:
+#### Java websocket.Socket
+The following unit test from `src/test/java/ServerTest.class` ensures backwards compatibility between the extended `websocket.Socket` class and the `java.net.Socket` class:
 
 ```java
 @Test

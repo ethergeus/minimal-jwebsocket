@@ -1,3 +1,7 @@
+package websocket.preprocessors;
+
+import websocket.Socket;
+
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.util.NoSuchElementException;
