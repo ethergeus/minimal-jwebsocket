@@ -22,7 +22,12 @@ As of version `1.0-3` the `minimal-jwebsocket` library is hosted in the Maven Ce
 </dependency>
 ```
 
-When building your application, you can replace the `java.net.ServerSocket` class with the `com.antonowycz.ServerSocket` class and the `java.net.Socket` class with the `com.antonowycz.websocket.Socket` class.
+When building your application, you can replace the `java.net.ServerSocket` class with the `com.antonowycz.websocket.ServerSocket` class and the `java.net.Socket` class with the `com.antonowycz.websocket.Socket` class:
+
+```java
+import com.antonowycz.websocket.ServerSocket;   // Extension of java.net.ServerSocket
+import com.antonowycz.websocket.Socket;         // Extension of java.net.Socket
+```
 
 ## Usage
 
@@ -30,8 +35,6 @@ When building your application, you can replace the `java.net.ServerSocket` clas
 Using the library to communicate with web browsers is designed to be as straight-forward as interacting normal `java.net` `Socket` clients. Below is a simple example server allowing only once consecutive client to connect at a time, to handle more than one client at a time implement a client handler class with a thread for every client.
 
 ```java
-import com.antonowycz.websocket.ServerSocket; // Extension of java.net.ServerSocket
-import com.antonowycz.websocket.Socket; // Extension of java.net.Socket
 ...
 public class TestServer implements Runnable {
     ...
