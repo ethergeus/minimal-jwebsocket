@@ -11,6 +11,19 @@ Minimal Java library for communication between server and web browser, designed 
 - Implement sending data in individual frames instead of all at once
 - Encode traffic from server to client (only encoding from client to server is mandatory)
 
+## Installation
+As of version `1.0-3` the `minimal-jwebsocket` library is hosted in the Maven Central OSSRH repository. Installation can be done by including the following dependency in your `pom.xml` file:
+
+```xml
+<dependency>
+    <groupId>com.antonowycz</groupId>
+    <artifactId>minimal-jwebsocket</artifactId>
+    <version>1.0-3</version>
+</dependency>
+```
+
+When building your application, you can replace the `java.net.ServerSocket` class with the `com.antonowycz.ServerSocket` class and the `java.net.Socket` class with the `com.antonowycz.websocket.Socket` class.
+
 ## Usage
 
 ### Server
@@ -56,7 +69,7 @@ public class TestServer implements Runnable {
 ### Client
 The code above works both when the client on the receiving end is a regular `java.net.Socket` class, or a web browser with the [RFC 6455](https://datatracker.ietf.org/doc/html/rfc6455) protocol implemented, e.g. Chrome 16+, Firefox 11+, IE 10+.
 
-#### Java websocket.Socket
+#### Java
 The following unit test from `src/test/java/ServerTest.class` ensures backwards compatibility between the extended `websocket.Socket` class and the `java.net.Socket` class:
 
 ```java
